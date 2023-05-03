@@ -1,0 +1,93 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL1")
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  password  String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  profile   Profile?
+  tickets   Ticket[]
+}
+
+model Profile {
+  id        String   @id @default(uuid())
+  address   String?
+  phone     String?
+  nickname  String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  user      User     @relation(fields: [userId], references: [id])
+  userId    String   @unique
+}
+
+model Ticket {
+  id         String   @id @default(uuid())
+  price      Float
+  ticketType Type     @default(ADULT)
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  movie      Movies   @relation(fields: [movieId], references: [id])
+  movieId    String
+}
+
+enum Type {
+  ADULT
+  CHILD
+  SENIOR
+}
+
+model Movies {
+  id          String      @id @default(uuid())
+  movie       String
+  year        Int?
+  description String?     @default("No plot exists for this movie.")
+  genre       String?     @default("Action")
+  rating      Int?
+  length      String?
+  trailerLink String?     @default("No trailer exists for this movie.")
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
+  tickets     Ticket[]
+  movieDate   movieDate[]
+  movieTime   movieTime[]
+}
+
+model ticketPrice {
+  id        String   @id @default(uuid())
+  price     Float
+  ticket    Type
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model movieDate {
+  id        String   @id @default(uuid())
+  date      DateTime @db.Date
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  movie     Movies   @relation(fields: [movieId], references: [id])
+  movieId   String
+}
+
+model movieTime {
+  id        String   @id @default(uuid())
+  time      DateTime @db.Time
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  movie     Movies   @relation(fields: [movieId], references: [id])
+  movieId   String
+}
