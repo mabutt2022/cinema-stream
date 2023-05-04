@@ -19,8 +19,6 @@ async function getMovies(req, res, next) {
 }
 
 
-
-
 module.exports = {
     getMovies,
 }
