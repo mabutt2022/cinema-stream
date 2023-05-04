@@ -52,12 +52,13 @@ enum Type {
 
 model Movies {
   id          String      @id @default(uuid())
-  movie       String
+  movie       String      @unique
   year        Int?
   description String?     @default("No plot exists for this movie.")
   genre       String?     @default("Action")
   rating      Int?
-  length      String?
+  image       String?
+  length      String?     @default("1h 30m")
   trailerLink String?     @default("No trailer exists for this movie.")
   createdAt   DateTime    @default(now())
   updatedAt   DateTime    @updatedAt
@@ -85,7 +86,7 @@ model movieDate {
 
 model movieTime {
   id        String   @id @default(uuid())
-  time      DateTime @db.Time
+  time      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   movie     Movies   @relation(fields: [movieId], references: [id])

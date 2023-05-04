@@ -1,8 +1,7 @@
-// import { PrismaClient } from '@prisma/client'
 const {PrismaClient} = require('@prisma/client')
 const prisma = new PrismaClient()
 const bcrypt = require('bcrypt');
-const User = require('../../models/user');
+// const User = require('../../models/user');
 const { createJWT, isValidPassword } = require('../../helpers/auth')
 const SALT_ROUNDS = 6;
 
