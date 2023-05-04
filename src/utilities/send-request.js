@@ -21,7 +21,7 @@ export default async function sendRequest(url, method = 'GET', payload = null){
     options.headers ||= {};
     options.headers.Authorization = `Bearer ${token}`;
   }
-  console.log(url)
+
   const res = await fetch(url, options)
 
   if (res.ok) return res.json() // converts json to JS obj

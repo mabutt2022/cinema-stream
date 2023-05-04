@@ -35,6 +35,8 @@ model Profile {
 model Ticket {
   id         String   @id @default(uuid())
   price      Float
+  movieDate  DateTime @db.Date
+  movieTime  String
   ticketType Type     @default(ADULT)
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt

@@ -6,6 +6,9 @@ async function getMovies(req, res, next) {
         const movies = await prisma.movies.findMany({
             orderBy: {
                 movie: 'asc'
+            },include: {
+                movieDate: true,
+                movieTime: true
             }
         })
         // console.log(movies)
@@ -14,6 +17,9 @@ async function getMovies(req, res, next) {
         res.status(400).json(err);
     }
 }
+
+
+
 
 module.exports = {
     getMovies,

@@ -1,17 +1,61 @@
-import * as userServices from '../../utilities/services/users'
+import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
+import * as moviesAPI from '../../utilities/api/movies.js'
+export default function MovieDetailPage() {
 
-export default function OrderHistoryPage() {
 
-  async function  handleCheckToken(){
-    const expDate = await userServices.checkToken()
+  
+    const location = useLocation();
+    const { data } = location.state;
+  
+  
 
-    console.log(expDate)
-  }
+
+
+  const {id, trailerLink, image, movie, year, description, genre, rating, length, movieDate, movieTime } = data
 
   return (
-    <>
-      <h1>OrderHistoryPage</h1>
-      <button onClick={handleCheckToken}>Check When My Login Expires</button>
-    </>
+    <section className='movieList'>
+      <h2>Movie Detail Page</h2>
+      <div>
+        {trailerLink}
+      </div>
+      <div>
+        <img className='movieImage' src={image} alt={movie} />
+      </div>
+      <div>
+        {movie}
+      </div>
+      <div>
+        {year}
+      </div>
+      <div>
+        {description}
+      </div>
+      <div>
+        {genre}
+      </div>
+      <div>
+        {rating}
+      </div>
+      <div>
+        {length}
+      </div>
+      <div>
+        <select name="movieDate" id="">
+          {movieDate.map((date) => (            
+              <option key={date.id} value={date.date}>{date.date.substring(0,10)}</option>            
+          ))}
+        </select>
+      </div>
+      <div>
+        <select name="movieTime" id="">
+          {movieTime.map((time) => (
+            <option key={time.id} value={time.time}>{time.time}</option>
+          ))}
+        </select>
+      </div>
+
+    </section>
   );
 }

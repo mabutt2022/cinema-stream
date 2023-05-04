@@ -6,3 +6,4 @@ const BASE_URL = '/api/movies';
 export async function moviesList() {
     return sendRequest(`${BASE_URL}`);
 }
+
