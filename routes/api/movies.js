@@ -8,4 +8,6 @@ router.get('/', esnureLoggedIn, moviesCtrl.getMovies);
 
 router.get('/price', esnureLoggedIn, moviesCtrl.getPrice);
 
+router.post('/ticket', esnureLoggedIn, moviesCtrl.submitTicket);
+
 module.exports = router

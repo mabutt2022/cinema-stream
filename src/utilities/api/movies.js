@@ -11,3 +11,6 @@ export async function getPrice() {
     return sendRequest(`${BASE_URL}/price`);
 }
 
+export async function sendTicket(formData) {
+    return sendRequest(`${BASE_URL}/ticket`, 'POST', formData);
+}
