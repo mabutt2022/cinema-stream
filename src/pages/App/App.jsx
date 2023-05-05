@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { Routes, Route, Navigate } from 'react-router-dom';
 
 
 // Components
@@ -24,9 +24,10 @@ export default function App() {
           <NavBar user={user} setUser={setUser} />
             <Routes>
               {/* Route components in here */}
-              <Route path="/" element={<MoviePage />} />
-              <Route path="/account" element={<AccountPage />} />
-              <Route path="/movieDetail" element={<MovieDetailPage />} />
+              <Route path="/movie" element={<MoviePage />} />
+              <Route path="/movie/account" element={<AccountPage />} />
+              <Route path="/movie/detail" element={<MovieDetailPage user={user}/>} />
+              <Route path="/" element={<Navigate to ='/movie' />} />
             </Routes>
           </>
           :

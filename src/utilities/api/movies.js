@@ -7,3 +7,7 @@ export async function moviesList() {
     return sendRequest(`${BASE_URL}`);
 }
 
+export async function getPrice() {
+    return sendRequest(`${BASE_URL}/price`);
+}
+

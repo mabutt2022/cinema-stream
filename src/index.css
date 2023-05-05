@@ -179,8 +179,9 @@ button[type="submit"] {
 }
 
 .movieList {
-  width: 300px;
+  width: 700px;
   height: 300px;
   object-fit: cover;
   
 }
+

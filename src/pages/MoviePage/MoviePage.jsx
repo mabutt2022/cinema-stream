@@ -4,45 +4,45 @@ import { useState, useEffect } from 'react';
 
 import * as moviesAPI from '../../utilities/api/movies.js'
 
-export default function MoviePage( {setMovieById} ) {
-  
+export default function MoviePage({ setMovieById }) {
+
   const [movies, setMovies] = useState([]);
-  
-  async function  handleMovieById(id){
+
+  async function handleMovieById(id) {
     await setMovieById(id)
   }
 
-  
+
   useEffect(() => {
-    
+
     async function getMovies() {
       const movies = await moviesAPI.moviesList();
-      setMovies(movies);      
+      setMovies(movies);
     }
     getMovies();
-    
+
   }, []);
 
 
-  
+
   return (
     <section className='movieList'>
       <h2>Movie Page</h2>
-        
+
       {movies.map((movie) => (
-          <Link to={'/movieDetail'} key={movie.id} state={{data: movie}}>
-        <div key={movie.id} 
-        onClick={async () => 
-          {await handleMovieById(movie.id)
-          
-          }}>
-          <img className='movieImage' src={movie.image} alt={movie.movie} />
-        </div>
-        <div>
-          {movie.movie}
-        </div>
-        <br />
-      </Link>
+        <Link to={'/movie/detail'} key={movie.id} state={{ data: movie }}>
+          <div key={movie.id}
+            onClick={async () => {
+              await handleMovieById(movie.id)
+
+            }}>
+            <img className='movieImage' src={movie.image} alt={movie.movie} />
+          </div>
+          <div>
+            {movie.movie}
+          </div>
+          <br />
+        </Link>
       )
       )}
 

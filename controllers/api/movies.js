@@ -18,7 +18,23 @@ async function getMovies(req, res, next) {
     }
 }
 
+async function getPrice(req, res, next) {
+    try {
+        const price = await prisma.ticketPrice.findMany({
+            orderBy: {
+                ticket: 'asc'
+            },select: {
+                price: true,
+                ticket: true
+            }
+        });
+        res.json(price)
+    } catch (error) {
+        console.error(error);
+    }
+}
 
 module.exports = {
     getMovies,
+    getPrice,
 }

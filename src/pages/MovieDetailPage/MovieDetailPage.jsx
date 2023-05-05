@@ -1,22 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
-import * as moviesAPI from '../../utilities/api/movies.js'
 import YoutubeEmbed from '../../components/Video/YoutubeEmbed.jsx';
-export default function MovieDetailPage() {
+import TicketForm from '../../components/MovieDetail/TicketForm.jsx';
 
 
+export default function MovieDetailPage( {user} ) {
 
   const location = useLocation();
   const { data } = location.state;
 
-
-
-
-
-  const { trailerLink, image, movie, year, description, genre, rating, length, movieDate, movieTime } = data
+  const {id, trailerLink, image, movie, year, description, genre, rating, length, movieDate, movieTime } = data
 
   return (
-    <body>
+    <div>
       <YoutubeEmbed embedId={trailerLink} />     
     
     <section className='movieList'>
@@ -44,21 +40,9 @@ export default function MovieDetailPage() {
         {length}
       </div>
       <div>
-        <select name="movieDate" id="">
-          {movieDate.map((date) => (
-            <option key={date.id} value={date.date}>{date.date.substring(0, 10)}</option>
-          ))}
-        </select>
+      <TicketForm movie={movie} movieId={id} movieDate={movieDate} movieTime={movieTime} user={user}/>
       </div>
-      <div>
-        <select name="movieTime" id="">
-          {movieTime.map((time) => (
-            <option key={time.id} value={time.time}>{time.time}</option>
-          ))}
-        </select>
-      </div>
-
     </section>
-    </body>
+    </div>
   );
 }

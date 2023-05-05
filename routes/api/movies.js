@@ -6,4 +6,6 @@ const moviesCtrl = require('../../controllers/api/movies');
 
 router.get('/', esnureLoggedIn, moviesCtrl.getMovies);
 
+router.get('/price', esnureLoggedIn, moviesCtrl.getPrice);
+
 module.exports = router
