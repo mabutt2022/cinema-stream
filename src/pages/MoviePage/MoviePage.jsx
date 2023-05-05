@@ -8,11 +8,6 @@ export default function MoviePage({ setMovieById }) {
 
   const [movies, setMovies] = useState([]);
 
-  async function handleMovieById(id) {
-    await setMovieById(id)
-  }
-
-
   useEffect(() => {
 
     async function getMovies() {
@@ -31,11 +26,7 @@ export default function MoviePage({ setMovieById }) {
 
       {movies.map((movie) => (
         <Link to={'/movie/detail'} key={movie.id} state={{ data: movie }}>
-          <div key={movie.id}
-            onClick={async () => {
-              await handleMovieById(movie.id)
-
-            }}>
+          <div key={movie.id}>
             <img className='movieImage' src={movie.image} alt={movie.movie} />
           </div>
           <div>

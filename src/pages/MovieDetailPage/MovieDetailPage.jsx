@@ -1,4 +1,3 @@
-import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import YoutubeEmbed from '../../components/Video/YoutubeEmbed.jsx';
 import TicketForm from '../../components/MovieDetail/TicketForm.jsx';

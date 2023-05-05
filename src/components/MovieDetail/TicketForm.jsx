@@ -1,9 +1,10 @@
-import { Link, Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as moviesAPI from '../../utilities/api/movies.js'
-import { getPrice, sendTicket } from '../../utilities/api/movies.js'
+import { sendTicket } from '../../utilities/api/movies.js'
 
 export default function TicketForm({ movie, movieId, movieDate, movieTime, user }) {
+    const navigate = useNavigate();
     const [price, setPrice] = useState([]);
     const [totalTicket, setTotalTicket] = useState([]);
     const [ticketPrice, setTicketPrice] = useState({
@@ -41,15 +42,19 @@ export default function TicketForm({ movie, movieId, movieDate, movieTime, user 
     }
 
 
-
     async function handleSubmit(evt) {
         evt.preventDefault();
-        await sendTicket(formData);
-        await setTotalTicket({});
-        await setTicketPrice({ adult: 0, child: 0, senior: 0 });
-        await setTicketActive(false);
+        try {
+            await sendTicket(formData);
+            setTotalTicket([]);
+            setTicketPrice({ adult: 0, child: 0, senior: 0 });
+            setFormData({ adult: 0, child: 0, senior: 0, movieDate: movieDate[0].date, movieTime: movieTime[0].time, movieId: movieId, userId: user.id })
+            setTicketActive(false);
+            console.log('Done this far')
+        } catch (error) {
+            console.log(error);
+        }
     }
-
 
 
     useEffect(() => {
@@ -65,6 +70,7 @@ export default function TicketForm({ movie, movieId, movieDate, movieTime, user 
     }, [ticketPrice]);
 
 
+
     return (
         <>
             <div>
@@ -72,7 +78,7 @@ export default function TicketForm({ movie, movieId, movieDate, movieTime, user 
             </div>
 
             {ticketActive ?
-                <form autoComplete='off' onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <h3>Ticket Form</h3>
                     <label>{movie}</label>
                     <br />

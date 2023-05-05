@@ -83,7 +83,7 @@ async function submitTicket(req, res, next) {
         let ticketPrice = await getPriceOfTicket("SENIOR");
         await loopTicket(senior, "SENIOR", movieDate, movieTime, userId, movieId, ticketPrice);
         }
-
+    res.json({ message: "Ticket(s) purchased successfully!" });
   } catch (error) {
     console.error(error);
   }
