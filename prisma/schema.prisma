@@ -11,14 +11,15 @@ datasource db {
 }
 
 model User {
-  id        String   @id @default(uuid())
-  email     String   @unique
-  name      String?
-  password  String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
-  profile   Profile?
-  tickets   Ticket[]
+  id           String         @id @default(uuid())
+  email        String         @unique
+  name         String?
+  password     String
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  profile      Profile?
+  tickets      Ticket[]
+  ticketHeader TicketHeader[]
 }
 
 model Profile {
@@ -28,22 +29,24 @@ model Profile {
   nickname  String?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  user      User     @relation(fields: [userId], references: [id])
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade, onUpdate: Cascade)
   userId    String   @unique
 }
 
 model Ticket {
-  id         String   @id @default(uuid())
-  price      Float
-  movieDate  DateTime @db.Date
-  movieTime  String
-  ticketType Type     @default(ADULT)
-  createdAt  DateTime @default(now())
-  updatedAt  DateTime @updatedAt
-  user       User     @relation(fields: [userId], references: [id])
-  userId     String
-  movie      Movies   @relation(fields: [movieId], references: [id])
-  movieId    String
+  id             String        @id @default(uuid())
+  price          Float
+  movieDate      DateTime      @db.Date
+  movieTime      String
+  ticketType     Type          @default(ADULT)
+  createdAt      DateTime      @default(now())
+  updatedAt      DateTime      @updatedAt
+  user           User          @relation(fields: [userId], references: [id])
+  userId         String
+  movie          Movies        @relation(fields: [movieId], references: [id])
+  movieId        String
+  TicketHeader   TicketHeader? @relation(fields: [ticketHeaderId], references: [id], onDelete: Cascade, onUpdate: Cascade)
+  ticketHeaderId String?
 }
 
 enum Type {
@@ -52,21 +55,36 @@ enum Type {
   SENIOR
 }
 
+model TicketHeader {
+  id          String   @id @default(uuid())
+  total       Float
+  ticketCount Int
+  movie       Movies   @relation(fields: [movieId], references: [id])
+  movieId     String
+  ticketType  Json
+  user        User     @relation(fields: [userId], references: [id])
+  userId      String
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  ticket      Ticket[]
+}
+
 model Movies {
-  id          String      @id @default(uuid())
-  movie       String      @unique
-  year        Int?
-  description String?     @default("No plot exists for this movie.")
-  genre       String?     @default("Action")
-  rating      Int?
-  image       String?
-  length      String?     @default("1h 30m")
-  trailerLink String?     @default("No trailer exists for this movie.")
-  createdAt   DateTime    @default(now())
-  updatedAt   DateTime    @updatedAt
-  tickets     Ticket[]
-  movieDate   movieDate[]
-  movieTime   movieTime[]
+  id           String         @id @default(uuid())
+  movie        String         @unique
+  year         Int?
+  description  String?        @default("No plot exists for this movie.")
+  genre        String?        @default("Action")
+  rating       Int?
+  image        String?
+  length       String?        @default("1h 30m")
+  trailerLink  String?        @default("No trailer exists for this movie.")
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+  tickets      Ticket[]
+  movieDate    movieDate[]
+  movieTime    movieTime[]
+  ticketHeader TicketHeader[]
 }
 
 model ticketPrice {

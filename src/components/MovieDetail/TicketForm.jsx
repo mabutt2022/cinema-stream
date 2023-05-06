@@ -20,7 +20,8 @@ export default function TicketForm({ movie, movieId, movieDate, movieTime, user 
         movieDate: movieDate[0].date,
         movieTime: movieTime[0].time,
         movieId: movieId,
-        userId: user.id
+        userId: user.id,
+        orderTotal: 0
     });
 
     const numberOfTicket = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15];
@@ -67,6 +68,7 @@ export default function TicketForm({ movie, movieId, movieDate, movieTime, user 
 
     useEffect(() => {
         setTotalTicket([ticketPrice.adult + ticketPrice.child + ticketPrice.senior]);
+        setFormData({ ...formData, orderTotal: ticketPrice.adult + ticketPrice.child + ticketPrice.senior })
     }, [ticketPrice]);
 
 

@@ -12,10 +12,10 @@ export default function MovieDetailPage( {user} ) {
 
   return (
     <div>
-      <YoutubeEmbed embedId={trailerLink} />     
     
     <section className='movieList'>
       <h2>Movie Detail Page</h2>
+      <YoutubeEmbed embedId={trailerLink} />     
       
       <div>
         <img className='movieImage' src={image} alt={movie} />

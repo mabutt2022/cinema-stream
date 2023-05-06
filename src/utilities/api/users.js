@@ -49,3 +49,14 @@ export function checkToken() {
     return sendRequest(`${BASE_URL}/check-token`);
 }
 
+export async function changePassword(passwordData) {
+    return sendRequest(`${BASE_URL}/change-password`, 'PUT', passwordData);
+}
+
+export async function getUserProfile() {
+    return sendRequest(`${BASE_URL}/profile`);
+}
+
+export async function updateUserInfo(userData) {
+    return sendRequest(`${BASE_URL}/update-user`, 'POST', userData);
+}

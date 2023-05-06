@@ -8,7 +8,11 @@ const prisma = new PrismaClient()
 //     },
 // }).then((data) => console.log(data[0].price))
 
+
+
+prisma.ticketHeader.deleteMany({}).then((data) => console.log(data))
 prisma.ticket.deleteMany({}).then((data) => console.log(data))
+
 
 // async function deleteAll () {
 //     await prisma.Movies.deleteMany({})

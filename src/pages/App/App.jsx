@@ -25,7 +25,7 @@ export default function App() {
             <Routes>
               {/* Route components in here */}
               <Route path="/movie" element={<MoviePage />} />
-              <Route path="/movie/account" element={<AccountPage />} />
+              <Route path="/account" element={<AccountPage user={user}/>} />
               <Route path="/movie/detail" element={<MovieDetailPage user={user}/>} />
               <Route path="/" element={<Navigate to ='/movie' />} />
             </Routes>

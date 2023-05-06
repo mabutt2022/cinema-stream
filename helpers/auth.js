@@ -12,6 +12,7 @@ function createJWT(user) {
 
 async function isValidPassword(myPlaintextPassword, hash){
     const match = await bcrypt.compare(myPlaintextPassword, hash);
+    console.log('match '+ match)
 
     return match
 }
