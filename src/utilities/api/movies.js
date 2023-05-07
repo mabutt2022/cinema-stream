@@ -23,3 +23,7 @@ export async function deleteTicket(id) {
     console.log(id);
     return sendRequest(`${BASE_URL}/deleteTicket/${id}`, 'DELETE');
 }
+
+export async function searchMovie(search) {
+    return sendRequest(`${BASE_URL}/search/${search}`);
+}

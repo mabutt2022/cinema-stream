@@ -10,6 +10,8 @@ router.get('/price', esnureLoggedIn, moviesCtrl.getPrice);
 
 router.get('/getTickets', esnureLoggedIn, moviesCtrl.getTickets);
 
+router.get('/search/:search', esnureLoggedIn, moviesCtrl.searchMovie);
+
 router.post('/ticket', esnureLoggedIn, moviesCtrl.submitTicket);
 
 router.delete('/deleteTicket/:id', esnureLoggedIn, moviesCtrl.deleteTicket);

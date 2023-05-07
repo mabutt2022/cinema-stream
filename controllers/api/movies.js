@@ -145,11 +145,33 @@ async function deleteTicket(req, res, next) {
   }
 }
 
+async function searchMovie(req, res, next) {
+  try {
+    const { search } = req.params;
+    const movies = await prisma.movies.findMany({
+      where: {
+        movie: {
+          contains: search,
+          mode: "insensitive",
+        },
+      },
+      include: {
+        movieDate: true,
+        movieTime: true,
+      },
+    });
+    res.json(movies);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
 
 module.exports = {
   getMovies,
   getPrice,
   submitTicket,
   getTickets,
-  deleteTicket
+  deleteTicket,
+  searchMovie
 };

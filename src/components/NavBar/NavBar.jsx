@@ -1,8 +1,9 @@
 
 import { Link } from 'react-router-dom';
 import * as userService from '../../utilities/services/users'
+import SearchBar from './SearchBar.jsx'
 
-export default function NavBar({ user, setUser }) {
+export default function NavBar({ user, setUser, setMovies, search, setSearch, setRunMovie }) {
   function handleLogOut(){
     userService.logOut()
     setUser(null)
@@ -10,6 +11,8 @@ export default function NavBar({ user, setUser }) {
 
   return (
     <nav>
+      <SearchBar setMovies={setMovies} search={search} setSearch={setSearch} setRunMovie={setRunMovie}/>
+      &nbsp; &nbsp;
       <Link to="/account">Account</Link>
       &nbsp; &nbsp;
       <Link to="/">Home</Link>
