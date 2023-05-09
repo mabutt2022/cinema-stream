@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { signUp } from '../../utilities/services/users'
+import './SignUpForm.css'
 
 const defaultState = {
     name: '',
@@ -12,26 +13,26 @@ const defaultState = {
     error: ''
 }
 
-export default function SignUpForm({ setUser }){
+export default function SignUpForm({ setUser }) {
     const [formData, setFormData] = useState(defaultState)
 
     const { name, email, password, confirm, address, phone, nickname, error } = formData;
 
-    const handleSubmit = async (e) =>{
+    const handleSubmit = async (e) => {
         // when we submit we basically just grab whatever we have in
         // the state.
         e.preventDefault();
 
-        try{
+        try {
             const { name, password, email, address, phone, nickname } = formData;
-            const data = {name, password, email, address, phone, nickname}
+            const data = { name, password, email, address, phone, nickname }
 
             const user = await signUp(data)
             // as soon as we get the decoded data from the creat account api call
             // (derived fromt he jwt in local storage), we can update app.js to store
             // user in state
             setUser(user)
-        }catch (err) {
+        } catch (err) {
             setFormData({
                 ...formData,
                 error: 'Sign up Failed - Try again!'
@@ -59,33 +60,31 @@ export default function SignUpForm({ setUser }){
 
     const disabled = (password !== confirm) || !name || !email || !password || !confirm
 
-    return <div className='SignUpForm'>
-            <div className="form-container">
-                <form onSubmit={handleSubmit} autoComplete="off">
-                    <label htmlFor="name">Name</label>
-                    <input type="text" name="name" id="name" value={name} onChange={handleChange} required/>
+    return (
+        <div className="formm">
+            <form onSubmit={handleSubmit} autoComplete="off">
+                <h1>Sign Up</h1>
+                <div className='info'>
+                <input placeholder='Name' className='email' type="text" name="name" id="name" value={name} onChange={handleChange} required />
 
-                    <label htmlFor="email">Email</label>
-                    <input type="text" name="email" id="email" value={email} onChange={handleChange} required />
+                <input placeholder='Email' className='email' type="text" name="email" id="email" value={email} onChange={handleChange} required />
 
-                    <label htmlFor="password">Password</label>
-                    <input type="password" name="password" id="password" value={password} onChange={handleChange} required />
+                <input placeholder='Password' className='email' type="password" name="password" id="password" value={password} onChange={handleChange} required />
 
-                    <label htmlFor="confirm">Confirm Password</label>
-                    <input type="password" name="confirm" id="confirm" value={confirm} onChange={handleChange} required />
+                <input placeholder='Confirm Password' className='email' type="password" name="confirm" id="confirm" value={confirm} onChange={handleChange} required />
 
-                    <label htmlFor="address">Address</label>
-                    <input type="text" name="address" id="address" value={address} onChange={handleChange} required />
+                <input placeholder='Address' className='email' type="text" name="address" id="address" value={address} onChange={handleChange} required />
 
-                    <label htmlFor="phone">Phone</label>
-                    <input type="text" name="phone" id="phone" value={phone} onChange={handleChange} required />
+                <input placeholder='Phone' className='email' type="text" name="phone" id="phone" value={phone} onChange={handleChange} required />
 
-                    <label htmlFor="nickname">Nickname</label>
-                    <input type="text" name="nickname" id="nickname" value={nickname} onChange={handleChange} required />
-
-                    <button type="submit" disabled={disabled}>Sign up</button>
-                </form>
-            </div>
+                <input placeholder='Nickname' className='email' type="text" name="nickname" id="nickname" value={nickname} onChange={handleChange} required />
+                </div>
+                <div className='btn'>
+                <button className='btn-primary' type="submit" disabled={disabled}>Sign up</button>
+                </div>
+            </form>
             {error && <p className="error-message">&nbsp;{error}</p>}
         </div>
+
+    )
 }

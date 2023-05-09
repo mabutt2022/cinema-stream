@@ -32,6 +32,7 @@ export default function SearchBar( {setMovies, search, setSearch, setRunMovie } 
     async function handleClear(evt) {
         evt.preventDefault();
         setSearch('');
+        setRunMovie(false);
         getMovies();
         // ref.current.value='';
     }

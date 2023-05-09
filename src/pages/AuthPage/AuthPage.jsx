@@ -2,6 +2,10 @@
 import { useState } from 'react';
 import SignUpForm from "../../components/SignUpForm/SignUpForm";
 import LoginForm from "../../components/LoginForm/LoginForm";
+import "./AuthPage.css";
+import logoImage from '../../assets/images/logo.png'
+
+
 
 export default function AuthPage({ setUser }) {
   const [existingUser, setExistingUser] = useState(false);
@@ -9,18 +13,24 @@ export default function AuthPage({ setUser }) {
 
   async function checkingLogin() {
     setExistingUser(!existingUser);
-    setButtonText(existingUser ? "Don't Have a Login" : "Already Have a Login")
+    setButtonText(existingUser ? "Sign up now" : "Login Now")
   }
   return (
-    <section>
-      <div>
-        <button onClick={checkingLogin}>{buttonText}</button>
-      {existingUser ?
-      <SignUpForm setUser={setUser}/>
-        :
-      <LoginForm setUser={setUser}/>
-    }
+    <header className="showcase">
+      <div className='logo'>
+      <img src={logoImage} alt="Cinema Stream"></img>
       </div>
-    </section>
+      <div className='showcase-content'>
+        {existingUser ?
+          <SignUpForm setUser={setUser} />
+          :
+          <LoginForm setUser={setUser} />
+        }
+        <div className="signup">
+          {existingUser ? <p>Got your Login ?</p> : <p>New to Cinema Stream ?</p>}
+          <button className='transparent' onClick={checkingLogin}>{buttonText}</button>
+        </div>
+      </div>
+    </header>
   );
 }
