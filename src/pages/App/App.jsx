@@ -18,16 +18,15 @@ export default function App() {
   const [user, setUser] = useState(getUser());
   const [movies, setMovies] = useState([]);
   const [search, setSearch] = useState('');
-  const [runMovie, setRunMovie] = useState(false);
 
   return (
-    <main className="App">
+    <>
       { user ?
           <>
-          <NavBar user={user} setUser={setUser} setMovies={setMovies} search={search} setSearch={setSearch} setRunMovie={setRunMovie}/>
+          <NavBar user={user} setUser={setUser} setMovies={setMovies} search={search} setSearch={setSearch}/>
             <Routes>
               {/* Route components in here */}
-              <Route path="/movie" element={<MoviePage movies={movies} setMovies={setMovies} setSearch={setSearch} runMovie={runMovie}/>} />
+              <Route path="/movie" element={<MoviePage movies={movies} setMovies={setMovies} setSearch={setSearch}/>} />
               <Route path="/account" element={<AccountPage user={user}/>} />
               <Route path="/movie/detail" element={<MovieDetailPage user={user} />} />
               <Route path="/" element={<Navigate to ='/movie' />} />
@@ -36,6 +35,6 @@ export default function App() {
           :
           <AuthPage setUser={setUser}/>
       }
-    </main>
+    </>
   );
 }

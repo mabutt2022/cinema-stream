@@ -1,10 +1,10 @@
 import { Link } from 'react-router-dom';
 // import { getMovies } from '../../utilities/services/movies';
-import { useState, useEffect} from 'react';
+import { useState, useEffect } from 'react';
 
 import * as moviesAPI from '../../utilities/api/movies.js'
 
-export default function MoviePage({ movies, setMovies, setSearch, runMovie }) {
+export default function MoviePage({ movies, setMovies, setSearch}) {
 
 
   // const [movies, setMovies] = useState([]);
@@ -13,35 +13,39 @@ export default function MoviePage({ movies, setMovies, setSearch, runMovie }) {
 
     async function getMovies() {
       const movies = await moviesAPI.moviesList();
+      setSearch('')
       setMovies(movies);
     }
-    if (!runMovie) return getMovies();
+    return getMovies();
 
-  }, [runMovie, setMovies]);
+  }, [setMovies, setSearch]);
 
 
 
   return (
-    <section className='movieList'>
-      <h2>Movie Page</h2>
+    <div className='container mt-5 '>
+      <div className='row' id='data-panel'>
 
-      {movies.map((movie) => (
-        <Link to={'/movie/detail'} key={movie.id} state={{ data: movie }}>
-          <div key={movie.id}
-          onClick={() => {
-            setSearch('');
-          }}
-          >
-            <img className='movieImage' src={movie.image} alt={movie.movie} />
+        {movies.map((movie) => (
+          <div key={movie.id} className='col-sm-3'>
+              <div key={movie.id} className='card mb-2'
+                onClick={() => {
+                  setSearch('');
+                }}
+              >
+                  <Link to={'/movie/detail'} key={movie.id} state={{ data: movie }}>
+                <img className='card-img-top' src={movie.image} alt={movie.movie} />
+            </Link>
+                <div className='card-body movie-item-body'>
+                  <h6 className='card-title'>{movie.movie}</h6>
+                </div>
+              </div>
           </div>
-          <div>
-            {movie.movie}
-          </div>
-          <br />
-        </Link>
-      )
-      )}
+        )
+        )}
+      </div>
 
-    </section>
+
+    </div>
   );
 }

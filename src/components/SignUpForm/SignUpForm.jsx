@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { signUp } from '../../utilities/services/users'
-import './SignUpForm.css'
+import '../../pages/AuthPage/AuthPage.css'
 
 const defaultState = {
     name: '',
