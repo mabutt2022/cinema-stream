@@ -1,12 +1,9 @@
-import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import * as moviesAPI from '../../utilities/api/movies.js'
 import { sendTicket } from '../../utilities/api/movies.js'
 import './TicketForm.css';
 
 export default function TicketForm({ movie, movieId, movieDate, movieTime, user }) {
-    // const val = 'margin-left:40px;'
-    const navigate = useNavigate();
     const [price, setPrice] = useState([]);
     const [totalTicket, setTotalTicket] = useState([]);
     const [ticketPrice, setTicketPrice] = useState({

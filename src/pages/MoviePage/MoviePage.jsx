@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
 // import { getMovies } from '../../utilities/services/movies';
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 
 import * as moviesAPI from '../../utilities/api/movies.js'
 

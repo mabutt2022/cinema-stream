@@ -8,8 +8,6 @@ import './AccountPage.css'
 export default function AccountPage({ user }) {
 
   const [profileData, setProfileData] = useState([]);
-  const [active, setActive] = useState(null);
-
 
   useEffect(() => {
     async function getUserInfo() {

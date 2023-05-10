@@ -1,6 +1,5 @@
 import * as moviesAPI from '../../utilities/api/movies.js'
 import { useNavigate, Navigate } from 'react-router-dom';
-import MoviePage from '../../pages/MoviePage/MoviePage.jsx';
 import '../../pages/MoviePage/MoviePage.css'
 
 export default function SearchBar( {setMovies, search, setSearch, setRunMovie } ) {
@@ -10,11 +9,6 @@ export default function SearchBar( {setMovies, search, setSearch, setRunMovie } 
     async function handleChange(evt) {
         setSearch(evt.target.value);
     }
-
-    async function getMovies() {
-        const movies = await moviesAPI.moviesList();
-        setMovies(movies);
-      }
 
     async function handleSubmit(evt) {
       if (evt.key === 'Enter') {
