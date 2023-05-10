@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { signUp } from '../../utilities/services/users'
 import '../../pages/AuthPage/AuthPage.css'
+import './SignUpForm.css'
 
 const defaultState = {
     name: '',
@@ -64,7 +65,7 @@ export default function SignUpForm({ setUser }) {
         <div className="formm">
             <form onSubmit={handleSubmit} autoComplete="off">
                 <h1>Sign Up</h1>
-                <div className='info'>
+                <div className='info-auth'>
                 <input placeholder='Name' className='email' type="text" name="name" id="name" value={name} onChange={handleChange} required />
 
                 <input placeholder='Email' className='email' type="text" name="email" id="email" value={email} onChange={handleChange} required />

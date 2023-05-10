@@ -11,12 +11,8 @@ export default function MovieDetailPage({ user }) {
   const { id, trailerLink, image, movie, year, description, genre, rating, length, movieDate, movieTime } = data
 
   return (
-    <>
-
-
-
-      
-        <div className='container'>
+    <>    
+        <div className='container cont-detail'>
           <div className='result'>
             <div className='info'>
               <img className='poster' src={image} alt={movie} />

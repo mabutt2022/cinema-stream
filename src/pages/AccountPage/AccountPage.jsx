@@ -3,6 +3,7 @@ import TicketHistory from "../../components/AccountPage/TicketHistory";
 import InfoChange from "../../components/AccountPage/InfoChange";
 import ChangePassword from "../../components/AccountPage/ChangePassword";
 import * as userAPI from '../../utilities/api/users.js'
+import './AccountPage.css'
 
 export default function AccountPage({ user }) {
 
@@ -20,70 +21,54 @@ export default function AccountPage({ user }) {
   }, [user.id]);
 
   return (
-    <>
-      <h1>Account Page</h1>
-      <br />
-      <button onClick={
-        () => {
-          if (active === 'password') {
-            setActive(null);
-            return;
-          } else if (active !== 'password') {
-            setActive('password');
-            return;
-          }
-        }}>Change Password</button>
-      <br />
-      {active === 'password' ?
-        <div>
-          <ChangePassword user={user} />
-          <br />
-          <br />
+    <section>
+      <div className="container">
+        <div className="row">
+          <h2 className="section-title text-center text-colored">Account Management</h2>
         </div>
-        :
-        null
-      }
-
-      <button onClick={
-        () => {
-          if (active === 'info') {
-            setActive(null);
-            return;
-          } else if (active !== 'info') {
-            setActive('info');
-            return;
-          }
-        }
-      }>Personal Info Change</button>
-      <br />
-      {active === 'info' ?
-        <div>
-          <InfoChange user={user} profileData={profileData} />
-          <br />
-          <br />
+        <div className="row pt-5">
+          <aside className="col-md-2">
+            <nav className="nav nav-pills flex-column nav-service">
+              <button type="button" data-bs-toggle='tab' data-bs-target="#info" className="text-start nav-link text-colored nav-service-item active">
+                Personal Info
+              </button>
+              <button type="button" data-bs-toggle="tab" data-bs-target="#password" className="text-start nav-link text-colored nav-service-item">
+                Change Password
+              </button>
+              <button type="button" data-bs-toggle="tab" data-bs-target="#history" className="text-start nav-link text-colored nav-service-item">
+                Purchase History
+              </button>
+            </nav>
+          </aside>
+          <div className="col-md-10">
+            <div className="tab-content">
+              <div className="tab-pane active" id="info">
+                <div className="row">
+                  <div className="col-md-5">
+                    <InfoChange user={user} profileData={profileData} />
+                  </div>
+                </div>
+              </div>
+              <div className="tab-pane" id="password">
+                <div className="row">
+                  <div className="col-md-5">
+                    <ChangePassword user={user} />
+                  </div>
+                </div>
+              </div>
+              <div className="tab-pane" id="history">
+                <div className="row">
+                  <div className="col-md-5">
+                    <TicketHistory user={user} />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-        :
-        null}
+      </div>
 
-      <button onClick={
-        () => {
-          if (active === 'history') {
-            setActive(null);
-            return;
-          } else if (active !== 'history') {
-            setActive('history');
-            return;
-          }
-        }
-      }>Ticket History</button>
-      <br />
-      {active === 'history' ?
-        <div>
-          <TicketHistory user={user} />
-        </div>
-        :
-        null}
-
-    </>
+      
+    </section>
   );
 }

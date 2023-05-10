@@ -16,6 +16,8 @@ Website: WWW.ADNANQAISER.COM
 }
 .rwd-table  tbody  td {
   display: block;
+  /* width: 1%; */
+  /* white-space: nowrap; */
 }
 .rwd-table  tbody tr td:first-child {
   padding-top: .5em;

@@ -111,40 +111,40 @@ export default function TicketForm({ movie, movieId, movieDate, movieTime, user 
                                 <th>Total</th>
                             </tr>
                             <tr>
-                                <td data-th="title">Adult</td>
-                                <td data-th="price">${price[0].price}</td>
-                                <td data-th="quantity">
+                                <td data-th="Age">Adult</td>
+                                <td data-th="Price">${price[0].price}</td>
+                                <td data-th="Quantity">
                                     <select name="adult" id="adult" onChange={onChangeTicketPrice}>
                                         {numberOfTicket.map((ticket) => (
                                             <option key={ticket} value={ticket}>{ticket}</option>
                                         ))}
                                     </select>
                                 </td>
-                                <td data-th="price">${ticketPrice.adult}</td>
+                                <td data-th="Total">${ticketPrice.adult}</td>
                             </tr>
                             <tr>
-                                <td data-th="title">Child</td>
-                                <td data-th="price">${price[1].price}</td>
-                                <td data-th="quantity">
+                                <td data-th="Age">Child</td>
+                                <td data-th="Price">${price[1].price}</td>
+                                <td data-th="Quantity">
                                     <select name="child" id="child" onChange={onChangeTicketPrice}>
                                         {numberOfTicket.map((ticket) => (
                                             <option key={ticket} value={ticket}>{ticket}</option>
                                         ))}
                                     </select>
                                 </td>
-                                <td data-th="price">${ticketPrice.child}</td>
+                                <td data-th="Total">${ticketPrice.child}</td>
                             </tr>
                             <tr>
-                                <td data-th="title">Senior</td>
-                                <td data-th="price">${price[2].price}</td>
-                                <td data-th="quantity">
+                                <td data-th="Age">Senior</td>
+                                <td data-th="Price">${price[2].price}</td>
+                                <td data-th="Quantity">
                                     <select name="senior" id="senior" onChange={onChangeTicketPrice}>
                                         {numberOfTicket.map((ticket) => (
                                             <option key={ticket} value={ticket}>{ticket}</option>
                                         ))}
                                     </select>
                                 </td>
-                                <td data-th="price">${ticketPrice.senior}</td>
+                                <td data-th="Total">${ticketPrice.senior}</td>
                             </tr>
                         </tbody>
                     </table>

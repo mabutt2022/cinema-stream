@@ -23,7 +23,7 @@ export default function MoviePage({ movies, setMovies, setSearch}) {
 
 
   return (
-    <div className='container mt-5 '>
+    <div className='container mt-5 cont-detail'>
       <div className='row' id='data-panel'>
 
         {movies.map((movie) => (

@@ -26,12 +26,17 @@
 .container {
   position: relative;
   /* bottom: -31.5em; */
-  background-color: #201f28;
+  /* background-color: #201f28; */
   padding: 1em 1.8em;
   border-radius: 0.6em ;
   -webkit-box-shadow: 1.2em 2em 3em rgba(0, 0, 0, 0.2);
   box-shadow: 1.2em 2em 3em rgba(0, 0, 0, 0.2);
 }
+
+.cont-detail{
+  background-color: #201f28;
+}
+
 .search-container {
   display:-webkit-box;
   display:-ms-flexbox;
