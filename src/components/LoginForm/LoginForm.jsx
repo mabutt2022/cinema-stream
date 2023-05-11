@@ -53,7 +53,7 @@ export default function LoginForm({ setUser }) {
         <div className='formm'>
 
             <form onSubmit={handleSubmit} autoComplete="off">
-                <h1>Sign In</h1>
+                <h1 className='auth-h1'>Sign In</h1>
                 <div className='info-auth'>
                     <input className='email' placeholder='Email...' type="email" name="email" id="email" value={email} onChange={handleChange} required /> <br />
                     <input className='email' placeholder='Password' type="password" name="password" id="password" value={password} onChange={handleChange} required />

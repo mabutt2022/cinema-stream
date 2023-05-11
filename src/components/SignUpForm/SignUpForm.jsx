@@ -64,7 +64,7 @@ export default function SignUpForm({ setUser }) {
     return (
         <div className="formm">
             <form onSubmit={handleSubmit} autoComplete="off">
-                <h1>Sign Up</h1>
+                <h1 className='auth-h1'>Sign Up</h1>
                 <div className='info-auth'>
                 <input placeholder='Name' className='email' type="text" name="name" id="name" value={name} onChange={handleChange} required />
 
