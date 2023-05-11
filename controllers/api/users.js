@@ -58,9 +58,11 @@ async function login(req, res, next) {
             const token = createJWT(user)
             res.json(token)
         }else{
+            console.log(req.user)
             res.status(400).json("Invalid Credentials");
         }
     } catch (err) {
+        console.log(err)
         res.status(400).json("Invalid Credentials");
     }
 }
