@@ -9,7 +9,7 @@ import logoImage from '../../assets/images/logo.png'
 
 export default function AuthPage({ setUser }) {
   const [existingUser, setExistingUser] = useState(false);
-  const [buttonText, setButtonText] = useState("Don't Have a Login");
+  const [buttonText, setButtonText] = useState("Sign up now");
 
   async function checkingLogin() {
     setExistingUser(!existingUser);
