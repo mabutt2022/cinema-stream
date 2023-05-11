@@ -4,7 +4,7 @@ import '../../pages/AuthPage/AuthPage.css'
 import './LoginForm.css'
 
 const defaultState = {
-    name: '',
+    email: '',
     password: '',
     error: ''
 }

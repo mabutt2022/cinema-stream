@@ -38,8 +38,6 @@
 }
 
 .search-container {
-  display:-webkit-box;
-  display:-ms-flexbox;
   display:flex;
 }
 .search-container input,
@@ -70,7 +68,6 @@
 }
 .info {
   position: relative;
-  display: -ms-grid;
   display: grid;
   -ms-grid-columns: 4fr 8fr;
   grid-template-columns: 4fr 8fr;
@@ -90,8 +87,6 @@
   color: white;
 }
 .rating {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
   -ms-flex-align: center;
@@ -112,8 +107,6 @@
   color: white;
 }
 .details {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   font-size: 0.95em;
   gap: 1em;
@@ -125,8 +118,6 @@
   font-weight: 300;
 }
 .genre {
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
   -ms-flex-pack: distribute;
   justify-content: space-around;
