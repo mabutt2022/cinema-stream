@@ -93,6 +93,7 @@ async function loopTicket(
 }
 
 async function submitTicket(req, res, next) {
+  console.log(req.body);
   try {
     const {adult, child, senior, movieDate, movieTime, movieId, orderTotal, userId} = req.body;
     const jsonObj = [
@@ -118,12 +119,12 @@ async function submitTicket(req, res, next) {
 
     if (parseInt(child) !== 0) {
       let ticketPrice = await getPriceOfTicket("CHILD");
-      await loopTicket( adult, "CHILD", movieDate, movieTime, userId, movieId, ticketPrice, ticketHead.id );
+      await loopTicket( child, "CHILD", movieDate, movieTime, userId, movieId, ticketPrice, ticketHead.id );
     }
 
     if (parseInt(senior) !== 0) {
       let ticketPrice = await getPriceOfTicket("SENIOR");
-      await loopTicket( adult, "SENIOR", movieDate, movieTime, userId, movieId, ticketPrice, ticketHead.id );
+      await loopTicket( senior, "SENIOR", movieDate, movieTime, userId, movieId, ticketPrice, ticketHead.id );
     }
     res.json({ message: "Ticket(s) purchased successfully!" });
   } catch (error) {
