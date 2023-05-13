@@ -25,7 +25,7 @@ A Cinema website to book ticket for your favourite movies for yourself and your 
 ![movie detail](https://github.com/mabutt2022/cinema-stream/assets/83681358/17472ac0-d475-4d38-b1a6-59de32b2ab3f)
 
 ### Movie Detail Page with ticket
-![movie detail with ticket](https://github.com/mabutt2022/cinema-stream/assets/83681358/9b7ef901-fe19-4eb2-97f2-d99d84a08a43)
+![movie detail with ticket](https://github.com/mabutt2022/cinema-stream/assets/83681358/1df5dcc1-480f-4d31-84ba-2b714c603fce)
 
 ### Account Page
 ![account page](https://github.com/mabutt2022/cinema-stream/assets/83681358/b4aca415-19cc-4961-8d0f-73a78e42150c)
@@ -53,7 +53,7 @@ List of Technologies used
 
 ## Getting Started
 
-<a href="https://cinema-stream.herokuapp.com/">Cinema Stream</a>By Muhammad Abuzar Butt
+<a href="https://cinema-stream.herokuapp.com/">Cinema Stream </a>By Muhammad Abuzar Butt
 
 
 ## AAU
@@ -62,7 +62,7 @@ List of Technologies used
 2. I want to be able to search movies if being shown in the cinema
 3. I want to be able to change my password of the account at later stages 
 4. I want to be able to change my personal info at later stages
-5. i want to be able to delete any refund any ticket that i purchased. 
+5. i want to be able to refund any ticket that i purchased. 
 
 ## Next Steps
 
