@@ -43,14 +43,12 @@ List of Technologies used
 3. JavaScript
 4. Prisma
 5. Postgres SQL
-6. JWT
-7. Bootstrap 
-8. Jquery 
-9. React 
-10. Express 
-11. Bycrypt 
-12. Heroku
-13. Git
+6. Bootstrap 
+7. Jquery 
+8. React 
+9. Express 
+10. Heroku
+11. Git
 
 ## Getting Started
 
