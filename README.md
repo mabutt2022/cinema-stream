@@ -50,6 +50,8 @@ List of Technologies used
 9. React 
 10. Express 
 11. Bycrypt 
+12. Heroku
+13. Git
 
 ## Getting Started
 
