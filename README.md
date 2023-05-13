@@ -1,10 +1,9 @@
-# Cinema Stream By Muhammad Abuzar Butt
-
+![logo](https://github.com/mabutt2022/cinema-stream/assets/83681358/01191a2f-7d23-419c-8838-252ace8d73aa)
 
 ## Description
 
 ---
-A Cinema website to book ticket for your favourite movies for yourself and your loved ones. 
+A Cinema website to book ticket for your favourite movies for yourself and your friends and family. 
 
 ## Planning
 
